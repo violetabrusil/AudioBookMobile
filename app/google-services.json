@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1090037862392",
+    "project_id": "fir-multimedia-storage",
+    "storage_bucket": "fir-multimedia-storage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090037862392:android:b5a2da4231607d870f100d",
+        "android_client_info": {
+          "package_name": "com.example.thesisaudiobook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090037862392-sbf2o9833s8mdaantj8ibtbsjj0d1b0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJpD8K8zXokdOslbXDW0MfhYv2XMP_Bdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090037862392-4gnsahupubqo3srvkfnnvdnlp36t24v2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
