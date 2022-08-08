@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,6 +18,7 @@ public class Home extends AppCompatActivity {
 
     private FirebaseAuth fAuth;
     TextView nameUser;
+    Button playList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,17 @@ public class Home extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         nameUser = findViewById(R.id.nameUser);
+        playList = findViewById(R.id.test);
+
+        playList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreatePlayList.class));
+            }
+        });
+
+
+
     }
 
     private void checkUser() {

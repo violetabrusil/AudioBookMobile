@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.201" />
+        <entry key="app/src/main/res/layout/activity_create_play_list.xml" value="0.18375549316406253" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24535522460937503" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23644256591796875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1836212158203125" />
