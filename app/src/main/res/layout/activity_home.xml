@@ -19,6 +19,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/nameUser"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="28dp"
+        android:paddingTop="5sp"
+        android:text="Nombre"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/hi"
+        app:layout_constraintTop_toBottomOf="@+id/greetings" />
+
+    <TextView
+        android:id="@+id/hi"
+        android:layout_width="56dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:paddingTop="5sp"
+        android:text="Hola"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greetings"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/notification"
         android:layout_width="46dp"
@@ -50,51 +81,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="166dp"
-        android:layout_marginBottom="528dp"
-        android:text="Agregados recientemente"
-        android:textColor="#FDFDFD"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="256dp"
         android:text="Recomendados"
         android:textColor="#FDFDFD"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameUser"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <include
+        android:id="@+id/viewAudioBooks"
+        layout="@layout/view_audio_book"
+        android:layout_width="200dp"
+        android:layout_height="245dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.046">
 
-    <TextView
-        android:id="@+id/nameUser"
-        android:layout_width="131dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greetings"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PlayList"
-        tools:layout_editor_absoluteX="274dp"
-        tools:layout_editor_absoluteY="569dp" />
+    </include>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
