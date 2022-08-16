@@ -1,6 +1,6 @@
 package com.example.thesisaudiobook.model
 
-class AudioBook {
+class AudioBookList {
 
     private var idAudioBook: Int? = null
     private var titleAudioBook: String? = null
@@ -55,12 +55,12 @@ class AudioBook {
         this.author = author!!
     }
 
-    fun getURLImage(): String? {
+    fun getUrlImage(): String? {
         return this.urlImage
     }
 
     fun setURLImage(author: String?) {
-        this.author = author!!
+        this.urlImage = urlImage!!
     }
 
 

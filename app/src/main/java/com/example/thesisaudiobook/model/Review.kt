@@ -3,7 +3,7 @@ package com.example.thesisaudiobook.model
 class Review {
 
     private var idReview: Int? = null
-    private var audiobook: AudioBook? = null
+    private var audiobook: AudioBookList? = null
     private var userId: String? = null
     private var comment: String? = null
     private var rating: String? = null
@@ -12,7 +12,7 @@ class Review {
 
     constructor(
         idReview: Int?,
-        audiobook: AudioBook?,
+        audiobook: AudioBookList?,
         userId: String?,
         comment: String?,
         rating: String?

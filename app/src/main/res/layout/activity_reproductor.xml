@@ -10,6 +10,16 @@
         android:layout_height="match_parent"
         android:background="#212121">
 
+        <ImageView
+            android:id="@+id/reproductorView"
+            android:layout_width="263dp"
+            android:layout_height="334dp"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
         <TextView
             android:id="@+id/titleNameBook"
             android:layout_width="140dp"
@@ -23,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+            app:layout_constraintTop_toBottomOf="@+id/reproductorView" />
 
         <TextView
             android:id="@+id/nameGen"
@@ -41,14 +51,52 @@
             app:layout_constraintTop_toBottomOf="@+id/titleNameBook"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="213dp"
-            android:layout_height="237dp"
-            android:layout_marginTop="104dp"
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:progress="50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:layout_constraintTop_toBottomOf="@+id/nameGen"></SeekBar>
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekbar"
+            app:layout_constraintVertical_bias="0.0">
+            
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_skip_previous_24"
+                android:background="@drawable/btn_bg"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/btnPlayReproductor"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_play_circle_filled_24"
+                android:layout_marginHorizontal="12dp"
+                android:background="@drawable/btn_bg"></ImageButton>
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_skip_next_24"
+                android:background="@drawable/btn_bg"></ImageButton>
+
+
+
+        </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
