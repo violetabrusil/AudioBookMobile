@@ -39,5 +39,31 @@ class AudioBook {
         this.userId = userId
     }
 
+    fun getTitleAudiobook(): String? {
+        return this.titleAudioBook
+    }
+
+    fun setTitleAudiobook(titleAudioBook: String?) {
+        this.titleAudioBook = titleAudioBook!!
+    }
+
+    fun getAuthor(): String? {
+        return this.author
+    }
+
+    fun setAuthor(author: String?) {
+        this.author = author!!
+    }
+
+    fun getURLImage(): String? {
+        return this.urlImage
+    }
+
+    fun setURLImage(author: String?) {
+        this.author = author!!
+    }
+
+
+
 
 }
