@@ -1,23 +1,32 @@
 package com.example.thesisaudiobook
 
+import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.SeekBar
+import android.widget.*
+import com.example.thesisaudiobook.model.AudioBookList
 import com.squareup.picasso.Picasso
+import java.util.concurrent.TimeUnit
 
 class Reproductor : AppCompatActivity() {
 
     private var imageView: ImageView? = null
-    private lateinit var btnPlay: ImageButton
-    private var mp: MediaPlayer? = null
+    private lateinit var btnPlay: Button
+    private lateinit var mp: MediaPlayer
     private lateinit var sbProgress: SeekBar
+    private lateinit var textCurrentTime:TextView
+    private lateinit var textDurationTime:TextView
+    private lateinit var audioBookSelected: AudioBookList
+    private lateinit var titleAudioBook: TextView
+    private lateinit var nameAuthor: TextView
+    private var totalTime: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,44 +40,112 @@ class Reproductor : AppCompatActivity() {
         imageView = findViewById(R.id.reproductorView)
         btnPlay = findViewById(R.id.btnPlayReproductor)
         sbProgress = findViewById(R.id.seekbar)
+        titleAudioBook = findViewById(R.id.titleNameBook)
+        nameAuthor = findViewById(R.id.nameAutor)
+        textCurrentTime = findViewById(R.id.textCurrentTime)
+        textDurationTime = findViewById(R.id.textTotalDuration)
 
+        audioBookSelected = intent.getSerializableExtra("audioBook") as AudioBookList
 
-        val imageUrl = "https://firebasestorage.googleapis.com/v0/b/fir-multimedia-storage.appspot.com/o/violeta.jpeg?alt=media&token=0b83c7b5-7b1e-42c3-bdb0-ad6698fa4a88"
+        val imageUrl = audioBookSelected.getUrlImage()
         Picasso.get().load(imageUrl).into(imageView)
 
-        val audioUrl = "https://firebasestorage.googleapis.com/v0/b/fir-multimedia-storage.appspot.com/o/foster-the-people-imagination-official-audio.mp3?alt=media&token=ae82b669-2fb9-44e2-9808-ff4727756fcb"
+        titleAudioBook.setText(audioBookSelected.getTitleAudiobook())
+        nameAuthor.setText(audioBookSelected.getAuthor())
 
-        var myTracking = myAudioTrack()
-        myTracking.start()
+        //MediaPLayer
+        val audioUrl = audioBookSelected.getUrlAudio()
+        mp = MediaPlayer()
+        mp.setDataSource(audioUrl)
+        mp.prepare()
+        totalTime = mp.duration
 
-        btnPlay.setOnClickListener(View.OnClickListener {
-            mp = MediaPlayer()
-            try {
-                mp!!.setDataSource(audioUrl)
-                mp!!.prepare()
-                mp!!.start()
-                sbProgress.max = mp!!.duration
-            }catch (ex:Exception){
-            }
-
-        })
-
-    }
-
-    inner class myAudioTrack(): Thread() {
-
-        override fun run() {
-            while (true) {
-                try {
-                    Thread.sleep(1000)
-                }catch (ex:Exception){ }
-                runOnUiThread{
-                    if (mp != null) {
-                        sbProgress.progress = mp!!.currentPosition
+        //Progress Bar
+        sbProgress.max = totalTime
+        sbProgress.setOnSeekBarChangeListener(
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        mp.seekTo(progress)
                     }
                 }
+
+                override fun onStartTrackingTouch(p0: SeekBar?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onStopTrackingTouch(p0: SeekBar?) {
+                    TODO("Not yet implemented")
+                }
             }
-        }
+        )
+
+        //Thread
+        Thread(Runnable {
+            while (mp != null) {
+                try {
+                    var msg = Message()
+                    msg.what = mp.currentPosition
+                    handler.sendMessage(msg)
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+
+                }
+            }
+        }).start()
 
     }
+
+    fun playAudioBook(v : View) {
+        if (mp.isPlaying) {
+            //Stop
+            mp.pause()
+            btnPlay.setBackgroundResource(R.drawable.ic_baseline_play_circle_filled_24)
+        } else {
+            //Start
+            mp.start()
+            btnPlay.setBackgroundResource(R.drawable.ic_baseline_pause_circle_filled_24)
+        }
+    }
+
+    @SuppressLint("HandlerLeak")
+    var handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            var currentPosition = msg.what
+
+            //Update progressBar
+            sbProgress.progress = currentPosition
+
+            //Update text
+            var currentTime = createTimeLabel(currentPosition)
+            textCurrentTime.text = currentTime
+            var remainingTime = createTimeLabel(totalTime - currentPosition)
+            textDurationTime.text = "-$remainingTime"
+        }
+    }
+
+    fun createTimeLabel(time: Int): String {
+        var timeLabel = ""
+        var min = time / 1000 / 60
+        var sec = time / 1000 % 60
+
+        timeLabel = "$min:"
+        if (sec < 10) timeLabel += "0"
+        timeLabel += sec
+        return timeLabel
+    }
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if(mp == null)
+            mp!!.release()
+        mp == null
+    }
+
+
 }
+
+

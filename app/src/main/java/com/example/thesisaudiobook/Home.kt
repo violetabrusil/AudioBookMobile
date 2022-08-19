@@ -7,10 +7,10 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,7 +71,6 @@ class Home : AppCompatActivity() {
         })
 
         callAudioBookService()
-
     }
 
 //    private fun checkUser() {
@@ -119,9 +118,13 @@ class Home : AppCompatActivity() {
                        recyclerView.layoutManager = mLayoutManager
                        recyclerView.itemAnimator = DefaultItemAnimator()
                        recyclerView.adapter = audiobookAdapter
-                   }
 
+
+
+
+                   }
                }
+
            }
        })
 

@@ -1,6 +1,8 @@
 package com.example.thesisaudiobook.model
 
-class AudioBookList {
+import java.io.Serializable
+
+class AudioBookList : Serializable {
 
     private var idAudioBook: Int? = null
     private var titleAudioBook: String? = null
@@ -39,6 +41,14 @@ class AudioBookList {
         this.userId = userId
     }
 
+    fun getIdAudioBook(): Int? {
+        return this.idAudioBook
+    }
+
+    fun setIdAudioBook(idAudioBook: Int?) {
+        this.idAudioBook = idAudioBook!!
+    }
+
     fun getTitleAudiobook(): String? {
         return this.titleAudioBook
     }
@@ -61,6 +71,14 @@ class AudioBookList {
 
     fun setURLImage(author: String?) {
         this.urlImage = urlImage!!
+    }
+
+    fun getUrlAudio(): String? {
+        return this.urlAudio
+    }
+
+    fun setUrlAudio(urlAudio: String?) {
+        this.urlAudio = urlAudio!!
     }
 
 

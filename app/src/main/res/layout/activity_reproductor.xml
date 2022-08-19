@@ -10,90 +10,134 @@
         android:layout_height="match_parent"
         android:background="#212121">
 
-        <ImageView
-            android:id="@+id/reproductorView"
-            android:layout_width="263dp"
-            android:layout_height="334dp"
-            android:layout_marginTop="80dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
-
-        <TextView
-            android:id="@+id/titleNameBook"
-            android:layout_width="140dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#FAFAFA"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reproductorView" />
-
-        <TextView
-            android:id="@+id/nameGen"
-            android:layout_width="136dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleNameBook"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <SeekBar
-            android:id="@+id/seekbar"
-            android:layout_width="350dp"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:progress="50"
+            android:layout_gravity="center"
+            android:layout_marginTop="130dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameGen"></SeekBar>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/reproductorView"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    app:srcCompat="@mipmap/ic_launcher_round" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/titleNameBook"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FAFAFA"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/nameAutor"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </LinearLayout>
+
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="200dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="33dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+            <TextView
+                android:id="@+id/textCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:00"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameAutor"></SeekBar>
+
+            <TextView
+                android:id="@+id/textTotalDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:00"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="325dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="80dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekbar"
-            app:layout_constraintVertical_bias="0.0">
-            
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_baseline_skip_previous_24"
-                android:background="@drawable/btn_bg"></ImageButton>
+            app:layout_constraintStart_toStartOf="parent">
 
-            <ImageButton
+            <Button
                 android:id="@+id/btnPlayReproductor"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_baseline_play_circle_filled_24"
                 android:layout_marginHorizontal="12dp"
-                android:background="@drawable/btn_bg"></ImageButton>
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_baseline_skip_next_24"
-                android:background="@drawable/btn_bg"></ImageButton>
-
-
+                android:background="@drawable/btn_bg"
+                android:onClick="playAudioBook"
+                ></Button>
 
         </LinearLayout>
 
