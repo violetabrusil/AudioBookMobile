@@ -3,16 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/btn_bar.xml" value="0.2655" />
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable/custom_button.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/custom_edit_text.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/custom_layout.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/custom_text.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_baseline_library_books_24.xml" value="0.2655" />
         <entry key="app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/ic_baseline_skip_previous_24.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.201" />
+        <entry key="app/src/main/res/layout/action_bar.xml" value="0.19208806278495444" />
         <entry key="app/src/main/res/layout/activity_create_play_list.xml" value="0.18375549316406253" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1706802368164062" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23644256591796875" />

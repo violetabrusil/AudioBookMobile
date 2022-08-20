@@ -12,11 +12,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thesisaudiobook.model.AudioBookList
 import com.example.thesisaudiobook.model.AudioBookAdapter
+import com.example.thesisaudiobook.model.AudioBookViewModel
 import com.example.thesisaudiobook.utils.AudioBookService
 import com.example.thesisaudiobook.utils.RetrofitServiceAudioBook
 import com.google.firebase.auth.FirebaseAuth
@@ -71,6 +75,8 @@ class Home : AppCompatActivity() {
         })
 
         callAudioBookService()
+
+
     }
 
 //    private fun checkUser() {
@@ -89,46 +95,30 @@ class Home : AppCompatActivity() {
 //        }
 //    }
 
-   private fun callAudioBookService (){
+   private fun callAudioBookService() {
 
-       val retrofitServiceAudioBook = RetrofitServiceAudioBook()
-       val audioBookService = retrofitServiceAudioBook.retrofit?.create(
-           AudioBookService::class.java
-       )
-       val result: Call<List<AudioBookList>> = audioBookService!!.getAllAudioBooks()
-
-       var data = MutableLiveData<List<AudioBookList>>()
-
-
-       result.enqueue(object : Callback<List<AudioBookList>> {
-           override fun onFailure(call: Call<List<AudioBookList>>, t: Throwable) {
-                Toast.makeText(this@Home, "Error", Toast.LENGTH_SHORT).show()
+       val viewModel = ViewModelProvider(this).get(AudioBookViewModel::class.java)
+       viewModel.getAudioBooks()
+       viewModel.audioBookList.observe(this, Observer {
+           for (audioBook in it) {
+               recommends.add(audioBook)
            }
 
-           override fun onResponse(call: Call<List<AudioBookList>>, response: Response<List<AudioBookList>>
-           ) {
-               if(response.isSuccessful){
-                   data.value = response!!.body()!!
-                   val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-                   recommends = response.body() as MutableList<AudioBookList>
-                   if (recommends != null) {
-                       audiobookAdapter = AudioBookAdapter(recommends!!)
-                       val mLayoutManager = LinearLayoutManager(applicationContext)
-                       mLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                       recyclerView.layoutManager = mLayoutManager
-                       recyclerView.itemAnimator = DefaultItemAnimator()
-                       recyclerView.adapter = audiobookAdapter
-
-
-
-
-                   }
-               }
-
+           if (recommends != null) {
+               val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+               audiobookAdapter = AudioBookAdapter(recommends!!)
+               audiobookAdapter.notifyDataSetChanged()
+               val mLayoutManager = LinearLayoutManager(applicationContext)
+               mLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+               recyclerView.layoutManager = mLayoutManager
+               recyclerView.itemAnimator = DefaultItemAnimator()
+               recyclerView.adapter = audiobookAdapter
            }
+
        })
-
 
 
    }
 }
+
+

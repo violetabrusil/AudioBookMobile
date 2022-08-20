@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface AudioBookService {
 
     @GET("getAllAudioBooks")
-    fun getAllAudioBooks(): Call<List<AudioBookList>>
+    suspend fun getAllAudioBooks(): List<AudioBookList>
 }
