@@ -16,14 +16,17 @@
         <entry key="app/src/main/res/drawable/ic_baseline_skip_previous_24.xml" value="0.1385" />
         <entry key="app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.201" />
         <entry key="app/src/main/res/layout/action_bar.xml" value="0.19208806278495444" />
+        <entry key="app/src/main/res/layout/activity_add_to_play_list.xml" value="0.28489583333333335" />
         <entry key="app/src/main/res/layout/activity_create_play_list.xml" value="0.18375549316406253" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1706802368164062" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23644256591796875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1836212158203125" />
+        <entry key="app/src/main/res/layout/activity_more_information.xml" value="0.19243316650390627" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2772623666997133" />
-        <entry key="app/src/main/res/layout/activity_reproductor.xml" value="0.25175018310546876" />
-        <entry key="app/src/main/res/layout/view_audio_book.xml" value="0.3931538899739584" />
+        <entry key="app/src/main/res/layout/activity_reproductor.xml" value="0.12858428955078127" />
+        <entry key="app/src/main/res/layout/view_audio_book.xml" value="0.1" />
         <entry key="app/src/main/res/layout/viw_audio_book.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/menu/menu_more_information.xml" value="0.278125" />
       </map>
     </option>
   </component>

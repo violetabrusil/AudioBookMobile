@@ -81,6 +81,15 @@ class AudioBookList : Serializable {
         this.urlAudio = urlAudio!!
     }
 
+    fun getGender(): String? {
+        return this.gender
+    }
+
+    fun setGender(gender: String?) {
+        this.gender = gender!!
+    }
+
+
 
 
 

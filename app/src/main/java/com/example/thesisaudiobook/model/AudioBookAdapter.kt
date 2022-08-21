@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thesisaudiobook.R
 import com.example.thesisaudiobook.Reproductor
@@ -40,11 +39,13 @@ internal class AudioBookAdapter(private var audioBookList: List<AudioBookList>) 
             val intent = Intent(
                 v.context,
                 Reproductor::class.java
+
             )
             intent.putExtra("audioBook", audioBook)
             v.context.startActivity(intent)
         }
         Log.d("idAudiobOOK", audioBook.getIdAudioBook().toString())
+
     }
     override fun getItemCount(): Int {
         return audioBookList.size

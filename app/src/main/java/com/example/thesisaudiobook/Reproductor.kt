@@ -1,19 +1,18 @@
 package com.example.thesisaudiobook
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
 import com.example.thesisaudiobook.model.AudioBookList
 import com.squareup.picasso.Picasso
-import java.util.concurrent.TimeUnit
 
 class Reproductor : AppCompatActivity() {
 
@@ -25,8 +24,12 @@ class Reproductor : AppCompatActivity() {
     private lateinit var textDurationTime:TextView
     private lateinit var audioBookSelected: AudioBookList
     private lateinit var titleAudioBook: TextView
+    private lateinit var gender: TextView
     private lateinit var nameAuthor: TextView
     private var totalTime: Int = 0
+    private lateinit var btnBackTo: Button
+    private lateinit var btnForward: Button
+    private lateinit var btnMoreInformation: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +43,21 @@ class Reproductor : AppCompatActivity() {
         imageView = findViewById(R.id.reproductorView)
         btnPlay = findViewById(R.id.btnPlayReproductor)
         sbProgress = findViewById(R.id.seekbar)
-        titleAudioBook = findViewById(R.id.titleNameBook)
-        nameAuthor = findViewById(R.id.nameAutor)
+        titleAudioBook = findViewById(R.id.titleBook)
+        gender = findViewById(R.id.gender)
+        nameAuthor = findViewById(R.id.nameAuthor)
         textCurrentTime = findViewById(R.id.textCurrentTime)
         textDurationTime = findViewById(R.id.textTotalDuration)
+        btnMoreInformation = findViewById(R.id.btnMoreInformation)
 
         audioBookSelected = intent.getSerializableExtra("audioBook") as AudioBookList
 
         val imageUrl = audioBookSelected.getUrlImage()
         Picasso.get().load(imageUrl).into(imageView)
 
-        titleAudioBook.setText(audioBookSelected.getTitleAudiobook())
-        nameAuthor.setText(audioBookSelected.getAuthor())
+        titleAudioBook.text = audioBookSelected.getTitleAudiobook()
+        gender.text = audioBookSelected.getGender()
+        nameAuthor.text = audioBookSelected.getAuthor()
 
         //MediaPLayer
         val audioUrl = audioBookSelected.getUrlAudio()
@@ -71,11 +77,9 @@ class Reproductor : AppCompatActivity() {
                 }
 
                 override fun onStartTrackingTouch(p0: SeekBar?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onStopTrackingTouch(p0: SeekBar?) {
-                    TODO("Not yet implemented")
                 }
             }
         )
@@ -93,6 +97,52 @@ class Reproductor : AppCompatActivity() {
                 }
             }
         }).start()
+
+        //Back to and forward 10s
+        btnBackTo = findViewById(R.id.btnBackTo)
+        btnForward = findViewById(R.id.btnForward)
+
+        btnBackTo.setOnClickListener{
+
+        }
+
+        btnForward.setOnClickListener {
+
+        }
+
+        //Menu for more information
+
+        val popupMenu = PopupMenu (
+            this,
+            btnMoreInformation
+        )
+
+        //Inflate layout for menu
+        popupMenu.menuInflater.inflate(R.menu.menu_more_information, popupMenu.menu)
+
+        //Handle menu tem clicks
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            //Get id f clicked menu item
+            val id = menuItem.itemId
+            //Handle menu items clicks
+            if (id == R.id.addToPlayList) {
+                startActivity(
+                    Intent(
+                        applicationContext,
+                        AddToPlayList::class.java
+                    )
+                )
+            } else if (id == R.id.addReview) {
+
+            }
+
+            false
+        }
+
+        //Handle button click: show menu item
+        btnMoreInformation.setOnClickListener{
+            popupMenu.show()
+        }
 
     }
 
@@ -136,15 +186,12 @@ class Reproductor : AppCompatActivity() {
         return timeLabel
     }
 
-
-
     override fun onDestroy() {
         super.onDestroy()
         if(mp == null)
             mp!!.release()
         mp == null
     }
-
 
 }
 
